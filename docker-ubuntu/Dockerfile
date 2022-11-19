@@ -7,8 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt /tmp/requirements.txt    
 RUN pip3 install -r /tmp/requirements.txt
-RUN apt-get update \
-    && apt-get install -y openssh-server \
+RUN apt-get install -y openssh-server \
     && systemctl ssh start \
     && systemctl ssh enable
 RUN useradd -ms /bin/bash apprunner
